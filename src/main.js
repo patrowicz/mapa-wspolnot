@@ -15,6 +15,20 @@ Vue.use(Vuetify, { theme: {
   success: '#4CAF50',
   warning: '#FFC107'
 }})
+/*import VueFire from 'vuefire'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+
+Vue.use(VueFire)
+firebase.initializeApp({
+  databaseURL: "https://mapa-wspolnot.firebaseio.com",
+  projectId: "mapa-wspolnot",
+/!*  apiKey: "AIzaSyDE58jTv3OkM0Wrow4gH_BtAkRpkdR8DSk",
+  authDomain: "mapa-wspolnot.firebaseapp.com",*!/
+})
+
+export const db = firebase.firestore()*/
+
 
 Vue.config.productionTip = false
 

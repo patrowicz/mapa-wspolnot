@@ -8,10 +8,7 @@
 
 <script>
 export default {
-  data () {
-    return {
-    }
-  },
-  name: 'MApaWspolnotApp'
+
+  name: 'MapaWspolnotApp'
 }
 </script>
