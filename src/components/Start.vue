@@ -2,6 +2,7 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
      <v-layout>
+       <v-text-field v-model="id"/>
        {{wspolnota}}
       <!--<div xs12 v-for="w in wspolnoty">{{w.a}}.</div>-->
      </v-layout>
@@ -14,12 +15,18 @@
   export default {
     data () {
       return {
+        id:"d1",
         wspolnota:{}
+      }
+    },
+    watch: {
+      id(v) {
+        this.$binding('wspolnota',db.collection('wspolnoty').doc(this.id))
       }
     },
     firestore() {
       return {
-        wspolnota: db.doc('wspolnoty/d1')
+        wspolnota: db.collection('wspolnoty').doc(this.id)
       }
     },
     // created() {
