@@ -1,9 +1,16 @@
 <template>
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
-     <v-layout>
-       <v-text-field v-model="id"/>
-       {{wspolnota}}
+     <v-layout row wrap>
+       <v-flex xs6>
+         <v-text-field v-model="id"/>
+       </v-flex>
+       <v-flex xs6>
+        {{wspolnota}}
+       </v-flex>
+       <v-flex xs12 v-for="w in (wspolnoty)" :key="w._id">
+         {{w}}
+       </v-flex>
       <!--<div xs12 v-for="w in wspolnoty">{{w.a}}.</div>-->
      </v-layout>
     </v-slide-y-transition>
@@ -11,12 +18,12 @@
 </template>
 
 <script>
-  import {db} from '../fbase'
+  import {db} from '../main'
   export default {
     data () {
       return {
         id:"d1",
-        wspolnota:{}
+        wspolnoty:[]
       }
     },
     watch: {
@@ -33,6 +40,7 @@
     //   this.wspolnota = db.doc('wspolnoty/d1').get()
     // },
     mounted() {
+      db.collection('wspolnoty').get().then(r => r.forEach(d => this.wspolnoty.push({ ...d.data(),_id:d.id } )))
     }
   }
 </script>

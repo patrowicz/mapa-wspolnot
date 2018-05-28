@@ -29,6 +29,19 @@ firebase.initializeApp({
 
 export const db = firebase.firestore()*/
 
+import VueFirestore from 'vue-firestore'
+import Firebase from 'firebase'
+require('firebase/firestore')
+Vue.use(VueFirestore)
+var firebaseApp = Firebase.initializeApp({
+  databaseURL: "https://mapa-wspolnot.firebaseio.com",
+  projectId: "mapa-wspolnot",
+})
+const firestore = firebaseApp.firestore();
+const settings = {/* your settings... */ timestampsInSnapshots: true};
+firestore.settings(settings);
+export const db = firestore
+
 
 Vue.config.productionTip = false
 
